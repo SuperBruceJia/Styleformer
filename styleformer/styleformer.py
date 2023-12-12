@@ -19,23 +19,23 @@ class Styleformer():
 
     if self.style == 0:
       self.ctf_tokenizer = AutoTokenizer.from_pretrained(ctf_model_tag, use_auth_token=False)
-      self.ctf_model = AutoModelForSeq2SeqLM.from_pretrained(ctf_model_tag, use_auth_token=False)
-      print("Casual to Formal model loaded...")
+      self.ctf_model = AutoModelForSeq2SeqLM.from_pretrained(ctf_model_tag, use_auth_token=False, torch_dtype=torch.float32)
+      # print("Casual to Formal model loaded...")
       self.model_loaded = True
     elif self.style == 1:
       self.ftc_tokenizer = AutoTokenizer.from_pretrained(ftc_model_tag, use_auth_token=False)
-      self.ftc_model = AutoModelForSeq2SeqLM.from_pretrained(ftc_model_tag, use_auth_token=False)
-      print("Formal to Casual model loaded...")
+      self.ftc_model = AutoModelForSeq2SeqLM.from_pretrained(ftc_model_tag, use_auth_token=False, torch_dtype=torch.float32)
+      # print("Formal to Casual model loaded...")
       self.model_loaded = True  
     elif self.style == 2:
       self.atp_tokenizer = AutoTokenizer.from_pretrained(atp_model_tag, use_auth_token=False)
-      self.atp_model = AutoModelForSeq2SeqLM.from_pretrained(atp_model_tag, use_auth_token=False)
-      print("Active to Passive model loaded...")  
+      self.atp_model = AutoModelForSeq2SeqLM.from_pretrained(atp_model_tag, use_auth_token=False, torch_dtype=torch.float32)
+      # print("Active to Passive model loaded...")  
       self.model_loaded = True
     elif self.style == 3:
       self.pta_tokenizer = AutoTokenizer.from_pretrained(pta_model_tag, use_auth_token=False)
-      self.pta_model = AutoModelForSeq2SeqLM.from_pretrained(pta_model_tag, use_auth_token=False)
-      print("Passive to Active model loaded...")        
+      self.pta_model = AutoModelForSeq2SeqLM.from_pretrained(pta_model_tag, use_auth_token=False, torch_dtype=torch.float32)
+      # print("Passive to Active model loaded...")        
       self.model_loaded = True
     else:
       print("Only CTF, FTC, ATP and PTA are supported in the pre-release...stay tuned")
