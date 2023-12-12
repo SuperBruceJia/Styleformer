@@ -115,7 +115,6 @@ class Styleformer():
         self.ctf_model = self.ctf_model.to(device)
         input_ids = input_ids.to(device)
 
-        # with torch.autocast("cuda"):
         preds = self.ctf_model.generate(
             input_ids,
             do_sample=True,

@@ -1,11 +1,15 @@
+# coding=utf-8
+
+import torch
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+
 class Adequacy:
-
     def __init__(self, model_tag='prithivida/parrot_adequacy_model'):
-        from transformers import AutoModelForSequenceClassification, AutoTokenizer
-        self.adequacy_model = AutoModelForSequenceClassification.from_pretrained(model_tag)
         self.tokenizer = AutoTokenizer.from_pretrained(model_tag)
+        self.adequacy_model = AutoModelForSequenceClassification.from_pretrained(model_tag, torch_dtype=torch.float32)
 
-    def filter(self, input_phrase, para_phrases, adequacy_threshold, device="cpu"):
+    def filter(self, input_phrase, para_phrases, adequacy_threshold, device="cuda"):
         top_adequacy_phrases = []
         for para_phrase in para_phrases:
             x = self.tokenizer(input_phrase, para_phrase, return_tensors='pt', max_length=128, truncation=True)
@@ -16,9 +20,10 @@ class Adequacy:
             adequacy_score = prob_label_is_true.item()
             if adequacy_score >= adequacy_threshold:
                 top_adequacy_phrases.append(para_phrase)
+
         return top_adequacy_phrases
 
-    def score(self, input_phrase, para_phrases, adequacy_threshold, device="cpu"):
+    def score(self, input_phrase, para_phrases, adequacy_threshold, device="cuda"):
         adequacy_scores = {}
         for para_phrase in para_phrases:
             x = self.tokenizer(input_phrase, para_phrase, return_tensors='pt', max_length=128, truncation=True)
@@ -30,4 +35,5 @@ class Adequacy:
             adequacy_score = prob_label_is_true.item()
             if adequacy_score >= adequacy_threshold:
                 adequacy_scores[para_phrase] = adequacy_score
+
         return adequacy_scores
