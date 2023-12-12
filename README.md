@@ -46,7 +46,7 @@ A Neural Language Style Transfer framework to transfer natural language text smo
 
 ## Installation
 ```python
-pip install git+https://github.com/PrithivirajDamodaran/Styleformer.git
+pip install git+https://github.com/SuperBruceJia/Styleformer.git.git
 ```
 ## Quick Start
 
