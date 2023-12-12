@@ -46,17 +46,8 @@ A Neural Language Style Transfer framework to transfer natural language text smo
 
 ## Installation
 ```python
-pip install git+https://github.com/SuperBruceJia/Styleformer.git.git
+pip install git+https://github.com/SuperBruceJia/Styleformer.git
 ```
-## Quick Start
-
-~~```python
-[IMPORTANT]
-If you are using in notebook, use the below line to login:
-       from huggingface_hub import notebook_login
-       notebook_login()
-else use:
-       huggingface-cli login```~~
 
 ### Casual to Formal (Available now !)
 ```python
