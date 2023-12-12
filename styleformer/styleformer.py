@@ -1,3 +1,8 @@
+import torch
+from transformers import AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM
+from styleformer import Adequacy
+
 class Styleformer():
 
   def __init__(
@@ -9,10 +14,6 @@ class Styleformer():
       pta_model_tag="prithivida/passive_to_active_styletransfer",
       adequacy_model_tag="prithivida/parrot_adequacy_model", 
   ):
-    from transformers import AutoTokenizer
-    from transformers import AutoModelForSeq2SeqLM
-    from styleformer import Adequacy
-
     self.style = style
     self.adequacy = adequacy_model_tag and Adequacy(model_tag=adequacy_model_tag)
     self.model_loaded = False
