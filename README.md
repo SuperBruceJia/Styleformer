@@ -1,29 +1,5 @@
-[![PyPI - License](https://img.shields.io/hexpm/l/plug)](https://github.com/PrithivirajDamodaran/Styleformer/blob/main/LICENSE)
-[![visitors](https://visitor-badge.glitch.me/badge?page_id=Styleformer.count_visitors)](https://visitor-badge.glitch.me)
-
-
-<p align="center">
-    <img src="./images/Styleformer.png" width="65%" height="60%"/>
-</p>
-
 # Styleformer
 A Neural Language Style Transfer framework to transfer natural language text smoothly between fine-grained language styles like formal/casual, active/passive, and many more.For instance, understand [What makes text formal or casual/informal](https://www.niu.edu/writingtutorial/style/formal-and-informal-style.shtml).
-
-## Table of contents
-- [Usecases for Styleformer](#usecases-for-styleformer)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-  * [Casual to Formal (Available now !)](#casual-to-formal--available-now---)
-  * [Formal to Casual (Available now !)](#formal-to-casual--available-now---)
-  * [Active to Passive (Available now !)](#active-to-passive--available-now---)
-  * [Passive to Active (Available now !)](#passive-to-active--available-now---)
-- [Knobs](#knobs)
-- [Models](#models)
-- [Dataset](#dataset)
-- [Benchmark](#benchmark)
-- [Streamlit Demo](#streamlit-demo)
-- [References](#references)
-- [Citation](#citation)
 
 ## Usecases for Styleformer
 
@@ -49,7 +25,7 @@ A Neural Language Style Transfer framework to transfer natural language text smo
 pip install git+https://github.com/SuperBruceJia/Styleformer.git
 ```
 
-### Casual to Formal (Available now !)
+### Casual to Formal
 ```python
 from styleformer import Styleformer
 import torch
@@ -147,7 +123,7 @@ for source_sentence in source_sentences:
 ----------------------------------------------------------------------------------------------------
 ```
 
-### Formal to Casual (Available now !)
+### Formal to Casual
 ```python
 from styleformer import Styleformer
 import warnings
@@ -212,12 +188,13 @@ for source_sentence in source_sentences:
 ----------------------------------------------------------------------------------------------------
 ```
 
-### Active to Passive (Available now !)
+### Active to Passive
 ```python
 # style = [0=Casual to Formal, 1=Formal to Casual, 2=Active to Passive, 3=Passive to Active etc..]
 sf = Styleformer(style = 2) 
 ```
-### Passive to Active (Available now !)
+
+### Passive to Active
 ```python
 # style = [0=Casual to Formal, 1=Formal to Casual, 2=Active to Passive, 3=Passive to Active etc..]
 sf = Styleformer(style = 3) 
@@ -238,17 +215,12 @@ target_sentence = sf.transfer(source_sentence, inference_on=-1, quality_filter=0
 |[prithivida/formal_to_informal_styletransfer](https://huggingface.co/prithivida/formal_to_informal_styletransfer)|Seq2Seq    |Beta|
 |[prithivida/active_to_passive_styletransfer](https://huggingface.co/prithivida/active_to_passive_styletransfer)|Seq2Seq    |Beta|
 |[prithivida/passive_to_active_styletransfer](https://huggingface.co/prithivida/passive_to_active_styletransfer)|Seq2Seq    |Beta|
-|prithivida/positive_to_negative_styletransfer|Seq2Seq    |WIP|
-|prithivida/negative_to_positive_styletransfer|Seq2Seq    |WIP|
 
 
 ## Dataset
 - The casual <=> formal dataset was generated using ideas mentioned in reference paper 1
 - The positive <=> negative dataset was generated using ideas mentioned in reference paper 3
 - Fined tuned on T5 on a Tesla T4 GPU and it took ~2 hours to train each of the above models with batch_size = 16 and epochs = 5.(Will share training args shortly)
-
-## Benchmark
-- TBD
 
 ## Streamlit Demo
 ```
@@ -261,10 +233,3 @@ streamlit run streamlit_app.py
 Parallel Data for In-Domain Training via POS Masking](https://www.aclweb.org/anthology/D19-5502.pdf)
 - [Generative Text Style Transfer for Improved Language Sophistication](http://cs230.stanford.edu/projects_winter_2020/reports/32069807.pdf)
 - [Delete, Retrieve, Generate: A Simple Approach to Sentiment and Style Transfer](https://arxiv.org/pdf/1804.06437.pdf)
-
-## Citation
-- TBD
-
-
-
-
